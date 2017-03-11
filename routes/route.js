@@ -31,14 +31,30 @@ router.get('/payroll', function(req, res){
 });//end og router.get
 
 
+router.post('/payroll', function(req, res) {
+  console.log('hit post route');
+  console.log('here is the body ->', req.body);
 
+  var payrollObject = req.body;
 
-
-
-
-
-
-
+  pool.connect(function(err, client, done) {
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }else{
+      client.query('INSERT INTO payroll (first_name, last_name, id_number, job_title, annual_salary) VALUES ($1, $2, $3, $4, $5);',
+        [payrollObject.first_name, payrollObject.last_name, payrollObject.id_number, payrollObject.job_title, payrollObject.annual_salary], function(err, result) {
+          done();
+          if(err){
+            console.log(err);
+            res.sendStatus(500); // the world exploded
+          }else{
+            res.sendStatus(201);
+          }
+      });
+    }
+  });
+});
 
 
 module.exports = router;

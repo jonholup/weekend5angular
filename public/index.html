@@ -16,25 +16,25 @@
 <body ng-app="PayrollApp">
   <div ng-controller="PayrollController as pc">
     <label for="firstName">First Name</label>
-    <input ng-model="pc.newperson.firstName" placeholder="First Name">
+    <input ng-model="pc.newPerson.first_name">
 
 
     <label for="lastName">Last Name</label>
-    <input ng-model="pc.newperson.lastName"placeholder="Last Name">
+    <input ng-model="pc.newPerson.last_name">
 
 
     <label for="idNumber">ID Number</label>
-    <input ng-model="pc.newperson.idNumber" placeholder="ID Number"  type="number">
+    <input ng-model="pc.newPerson.id_number"type="number">
 
 
     <label for="jobTitle">Job Title</label>
-    <input ng-model="pc.newperson.jobTitle" placeholder="Job Title">
+    <input ng-model="pc.newPerson.job_title">
 
 
     <label for="annualSalary">Annual Salary</label>
-    <input ng-model="pc.newperson.annualSalary" placeholder="Annual Salary" type="number">
+    <input ng-model="pc.newPerson.annual_salary" type="number">
 
-    <button type="button" ng-click="">Submit</button>
+    <button type="button" ng-click="pc.addPerson()">Submit</button>
 
     <h1> Employee List</h1>
     <table align="center">
