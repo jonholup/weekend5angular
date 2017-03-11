@@ -1,10 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
 
-  </body>
+  <title> Full Stack Group Challenge</title>
+  <script src="vendors/angular.min.js" charset="utf-8"></script>
+  <script src="vendors/angular-route.min.js" charset="utf-8"></script>
+  <script src="scripts/client.js" charset="utf-8"></script>
+  <script src="scripts/factories/factory.factory.js" charset="utf-8"></script>
+  <script src="scripts/controllers/payroll.controller.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="vendors/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <title></title>
+</head>
+<body ng-app="PayrollApp">
+  <div ng-controller="PayrollController as pc">
+    <label for="firstName">First Name</label>
+    <input ng-model="pc.newperson.firstName" placeholder="First Name">
+
+
+    <label for="lastName">Last Name</label>
+    <input ng-model="pc.newperson.lastName"placeholder="Last Name">
+
+
+    <label for="idNumber">ID Number</label>
+    <input ng-model="pc.newperson.idNumber" placeholder="ID Number"  type="number">
+
+
+    <label for="jobTitle">Job Title</label>
+    <input ng-model="pc.newperson.jobTitle" placeholder="Job Title">
+
+
+    <label for="annualSalary">Annual Salary</label>
+    <input ng-model="pc.newperson.annualSalary" placeholder="Annual Salary" type="number">
+
+    <button type="button" ng-click="">Submit</button>
+
+    <h1> Employee List</h1>
+    <table align="center">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>ID Number</th>
+          <th>Job Title</th>
+          <th>Annual Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="person in pc.allPeople.list">
+          {{pc.allPeople.list}}
+          <td>{{person.first_name}}</td>
+          <td>{{person.last_name}}</td>
+          <td>{{person.id_number}}</td>
+          <td>{{person.job_title}}</td>
+          <td>{{person.annual_salary}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p id="monthlySalary">
+      Monthly Salary Expenditures:
+      <span id="totalSalary">0</span>
+    </p>
+
+  </div>
+</body>
 </html>
