@@ -15,26 +15,28 @@
 </head>
 <body ng-app="PayrollApp">
   <div ng-controller="PayrollController as pc">
-    <label for="firstName">First Name</label>
-    <input ng-model="pc.newPerson.first_name">
+    <form name="form">
+      <label for="firstName">First Name</label>
+      <input name="field" ng-model="pc.newPerson.first_name">
 
 
-    <label for="lastName">Last Name</label>
-    <input ng-model="pc.newPerson.last_name">
+      <label for="lastName">Last Name</label>
+      <input name="field" ng-model="pc.newPerson.last_name">
 
 
-    <label for="idNumber">ID Number</label>
-    <input ng-model="pc.newPerson.id_number"type="number">
+      <label for="idNumber">ID Number</label>
+      <input name="field" ng-model="pc.newPerson.id_number"type="number">
 
 
-    <label for="jobTitle">Job Title</label>
-    <input ng-model="pc.newPerson.job_title">
+      <label for="jobTitle">Job Title</label>
+      <input name="field" ng-model="pc.newPerson.job_title">
 
 
-    <label for="annualSalary">Annual Salary</label>
-    <input ng-model="pc.newPerson.annual_salary" type="number">
+      <label for="annualSalary">Annual Salary</label>
+      <input name="field" ng-model="pc.newPerson.annual_salary" type="number">
 
-    <button type="button" ng-click="pc.addPerson()">Submit</button>
+      <button type="button" ng-click="pc.addPerson()">Submit</button>
+    </form>
 
     <h1> Employee List</h1>
     <table align="center">
@@ -49,7 +51,6 @@
       </thead>
       <tbody>
         <tr ng-repeat="person in pc.allPeople.list">
-          {{pc.allPeople.list}}
           <td>{{person.first_name}}</td>
           <td>{{person.last_name}}</td>
           <td>{{person.id_number}}</td>
@@ -60,7 +61,7 @@
     </table>
     <p id="monthlySalary">
       Monthly Salary Expenditures:
-      <span id="totalSalary">0</span>
+      <span>{{pc.allPeople.monthlyExpenditure}}</span>
     </p>
 
   </div>

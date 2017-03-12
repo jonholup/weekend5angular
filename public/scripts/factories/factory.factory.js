@@ -12,9 +12,19 @@ myApp.factory('FactoryFactory', ['$http', function($http){
       url: '/payroll'
     }).then(function(response){
       payroll.list = response.data;
+      payroll.monthlyExpenditure = getMonthlyExpenditure(payroll);
+
       console.log('logging in payroll in function', payroll.list);
     });//ends .then
-  } //ends getPayroll function
+  }; //ends getPayroll function
+
+  function getMonthlyExpenditure(payroll) {
+    var monthlyExpenditure = 0;
+    for (i = 0; i < payroll.list.length; i++) {
+      monthlyExpenditure += parseFloat(payroll.list[i].annual_salary / 12);
+    };
+    return monthlyExpenditure;
+  }
 
   function addPerson(newPerson) {
     $http({
@@ -25,13 +35,14 @@ myApp.factory('FactoryFactory', ['$http', function($http){
       console.log(response);
       getPayroll();
       self.newPerson = {};
+
     });
   }
 
 
   return {
     payroll: payroll,
-    addPerson: addPerson
+    addPerson: addPerson,
   };
 
 }]);

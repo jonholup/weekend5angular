@@ -3,11 +3,16 @@ myApp.controller('PayrollController', ['FactoryFactory', function(FactoryFactory
   var self = this;
   self.newPerson = {};
   self.allPeople = FactoryFactory.payroll;
+  self.monthlyExpenditure = FactoryFactory.monthlyExpenditure;
+
+
+console.log('controller monthlyExpenditure:', self.monthlyExpenditure);
 
 
   // addNewPerson to database
   self.addPerson = function() {
       FactoryFactory.addPerson(self.newPerson);
+      self.newPerson = {};
     }
 
 }]);
