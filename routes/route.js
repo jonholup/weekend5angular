@@ -17,7 +17,7 @@ router.get('/payroll', function(req, res){
       console.log('Error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
-      client.query('SELECT first_name, last_name, id_number, job_title, annual_salary FROM payroll;', function(errorMakingQuery, result){
+      client.query('SELECT first_name, last_name, id_number, job_title, annual_salary, id FROM payroll;', function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Error making the database query: ', errorMakingQuery);
@@ -50,6 +50,29 @@ router.post('/payroll', function(req, res) {
             res.sendStatus(500); // the world exploded
           }else{
             res.sendStatus(201);
+          }
+      });
+    }
+  });
+});
+
+router.delete('/payroll/:id', function(req, res) {
+  var personToDeleteId = req.params.id;
+  console.log('hit delete route');
+  console.log('here is the id to delete ->', personToDeleteId);
+  pool.connect(function(err, client, done) {
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }else{
+      client.query('DELETE FROM payroll WHERE id=$1;',
+        [personToDeleteId], function(err, result) {
+          done();
+          if(err){
+            console.log(err);
+            res.sendStatus(500); // the world exploded
+          }else{
+            res.sendStatus(200);
           }
       });
     }

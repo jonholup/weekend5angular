@@ -13,9 +13,8 @@ myApp.factory('FactoryFactory', ['$http', function($http){
     }).then(function(response){
       payroll.list = response.data;
       payroll.monthlyExpenditure = getMonthlyExpenditure(payroll);
-
       console.log('logging in payroll in function', payroll.list);
-    });//ends .then
+    });
   }; //ends getPayroll function
 
   function getMonthlyExpenditure(payroll) {
@@ -39,10 +38,20 @@ myApp.factory('FactoryFactory', ['$http', function($http){
     });
   }
 
+  function deletePerson(personId) {
+    $http({
+      method: 'DELETE',
+      url: '/payroll/' + personId
+    }).then(function(response) {
+      getPayroll();
+    });
+  }
 
   return {
     payroll: payroll,
     addPerson: addPerson,
+    deletePerson: deletePerson,
+    getPayroll: getPayroll
   };
 
 }]);

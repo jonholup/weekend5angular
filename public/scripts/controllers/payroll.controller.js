@@ -15,4 +15,8 @@ console.log('controller monthlyExpenditure:', self.monthlyExpenditure);
       self.newPerson = {};
     }
 
+  self.deletePerson = function(personId) {
+    FactoryFactory.deletePerson(personId);
+    FactoryFactory.getPayroll();
+  }
 }]);
