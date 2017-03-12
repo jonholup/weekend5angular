@@ -23,7 +23,7 @@ myApp.factory('FactoryFactory', ['$http', function($http){
       monthlyExpenditure += parseFloat(payroll.list[i].annual_salary / 12);
     };
     return monthlyExpenditure;
-  }
+  }; // ends getMonthlyExpenditure function
 
   function addPerson(newPerson) {
     $http({
@@ -36,7 +36,7 @@ myApp.factory('FactoryFactory', ['$http', function($http){
       self.newPerson = {};
 
     });
-  }
+  }; // ends addPerson function
 
   function deletePerson(personId) {
     $http({
@@ -45,7 +45,7 @@ myApp.factory('FactoryFactory', ['$http', function($http){
     }).then(function(response) {
       getPayroll();
     });
-  }
+  }; // ends deletePerson function
 
   return {
     payroll: payroll,

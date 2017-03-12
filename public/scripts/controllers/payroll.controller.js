@@ -6,15 +6,14 @@ myApp.controller('PayrollController', ['FactoryFactory', function(FactoryFactory
   self.monthlyExpenditure = FactoryFactory.monthlyExpenditure;
 
 
-console.log('controller monthlyExpenditure:', self.monthlyExpenditure);
 
-
-  // addNewPerson to database
+  // addPerson to database
   self.addPerson = function() {
       FactoryFactory.addPerson(self.newPerson);
       self.newPerson = {};
     }
 
+  // deletePerson from database
   self.deletePerson = function(personId) {
     FactoryFactory.deletePerson(personId);
     FactoryFactory.getPayroll();

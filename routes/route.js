@@ -25,10 +25,10 @@ router.get('/payroll', function(req, res){
         } else {
           res.status(200).send(result.rows);
         }
-      });//end of function(errorMakingQuery, result)
+      });
     }
-  });//end of pool.connect
-});//end og router.get
+  });
+});// end get route
 
 
 router.post('/payroll', function(req, res) {
@@ -54,7 +54,7 @@ router.post('/payroll', function(req, res) {
       });
     }
   });
-});
+}); //end post route
 
 router.delete('/payroll/:id', function(req, res) {
   var personToDeleteId = req.params.id;
@@ -77,7 +77,7 @@ router.delete('/payroll/:id', function(req, res) {
       });
     }
   });
-});
+}); // end router.delete
 
 
 module.exports = router;
